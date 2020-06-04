@@ -14,7 +14,7 @@ endif()
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 conan_add_remote(NAME bincrafters INDEX 1
             URL https://api.bintray.com/conan/bincrafters/public-conan)
-conan_cmake_run(REQUIRES sdl2/2.0.10@bincrafters/stable nlohmann_json/3.7.3  boost_dll/1.69.0@bincrafters/stable boost_filesystem/1.69.0@bincrafters/stable  box2d/2.3.2.ef96a4f@conan/stable BASIC_SETUP BUILD missing)
+conan_cmake_run(REQUIRES sdl2/2.0.10@bincrafters/stable nlohmann_json/3.7.3  boost_dll/1.69.0@bincrafters/stable boost_any/1.69.0@bincrafters/stable boost_filesystem/1.69.0@bincrafters/stable  box2d/2.3.2.ef96a4f@conan/stable BASIC_SETUP BUILD missing)
 
 add_library(${PROJECT_NAME} SHARED "main.cpp" "box2dsystem.cpp" "physicsbodycomponent.cpp" "staticbodycomponent.cpp" "dynamicbodycomponent.cpp" "physicsfixturecomponent.cpp" "circlefixturecomponent.cpp" "boxfixturecomponent.cpp")
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})

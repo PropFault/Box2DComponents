@@ -36,7 +36,7 @@ void Box2dSystem::think(EntityComponentManager &ecs, const std::unordered_set<Co
 
     for(auto cid : cids){
         PhysicsBodyComponent *body = ecs.lookupCID<PhysicsBodyComponent>(cid);
-        std::cout<<"HANDLING PHYSICS FOR ENTITY " << body->getEntity() << std::endl;
+        //std::cout<<"HANDLING PHYSICS FOR ENTITY " << body->getEntity() << std::endl;
         Transform *transform = ecs.lookupCID<Transform>(body->getTransform());
 
         if(body->getBody() == NULL)
@@ -58,6 +58,6 @@ void Box2dSystem::think(EntityComponentManager &ecs, const std::unordered_set<Co
         }
         b2Vec2 position = body->getBody()->GetPosition();
         transform->setPosition(Vec2(position.x, position.y));
-        std::cout<<"SETTING POS TO " << transform->getPosition() << std::endl;
+        //std::cout<<"SETTING POS TO " << transform->getPosition() << std::endl;
     }
 }

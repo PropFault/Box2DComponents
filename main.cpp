@@ -8,6 +8,9 @@
 #include <iostream>
 #include "box2dsystem.h"
 #include "boxfixturecomponent.h"
+#include "../BlastCompany/functionmanager.h"
+#include "../BlastCompany/context.h"
+#include "staticbodycomponent.h"
 using namespace std;
 
 namespace plugins {
@@ -21,7 +24,8 @@ public:
 
     // ComponentPlugin interface
 public:
-    void onRegisterComponents(const Window &window, const SDLRenderer &renderer, EntityComponentManager &ecm) override{
+    void onRegisterComponents(const Context &context) override{
+        EntityComponentManager &ecm = context.getEcm();
         ecm.registerBlueprint(new StaticBodyComponent);
         ecm.registerBlueprint(new DynamicBodyComponent);
         ecm.registerBlueprint(new CircleFixtureComponent);
