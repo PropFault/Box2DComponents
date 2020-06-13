@@ -32,7 +32,7 @@ public:
         ecm.registerBlueprint(new BoxFixtureComponent);
     }
     void onRegisterSystems(SystemPipeline &pipeline, const Context &context) override{
-        pipeline.add(new Box2dSystem(b2Vec2(0.0f,10.0f), 1.0f/60.0f, 8,3));
+        pipeline.add(new Box2dSystem(b2Vec2(0.0f,10.0f), 1.0f/100.0f, 8,3));
     }
 };
 extern "C" BOOST_SYMBOL_EXPORT PhyiscsComponentPlugin plugin;

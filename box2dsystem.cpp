@@ -49,13 +49,15 @@ void Box2dSystem::think(EntityComponentManager &ecs, const std::unordered_set<Co
                 body->getBody()->CreateFixture(&def);
             }
         }
-        if(((clock()-lastExec)/(double)CLOCKS_PER_SEC)>=this->timeStep){
+       // if(((clock()-lastExec)/(double)CLOCKS_PER_SEC)>=this->timeStep){
             if(simNeeded){
-                this->world.Step(this->timeStep, this->velocityIterations, this->positionIterations);
+                std::cout<<"Timestep: " <<  ((clock()-lastExec)/(double)CLOCKS_PER_SEC) << std::endl;
+                this->world.Step(((clock()-lastExec)/(double)CLOCKS_PER_SEC), this->velocityIterations, this->positionIterations);
                 simNeeded = false;
+                lastExec = clock();
+
             }
-            lastExec = clock();
-        }
+     //   }
         b2Vec2 position = body->getBody()->GetPosition();
         transform->setPosition(Vec2(position.x, position.y));
         //std::cout<<"SETTING POS TO " << transform->getPosition() << std::endl;
